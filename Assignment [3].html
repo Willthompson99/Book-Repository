@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Includes the Prism.js library for syntax highlighting when writing codes -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-java.min.js"></script>
+
+  <title>Assignment [3]</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap">
+
+  <style>
+        body 
+        {
+            font-family: 'Noto Sans TC', 'Microsoft JhengHei', 'Ubuntu', 'Nunito', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+        header, footer 
+        {
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+        }
+        header h1, footer p 
+        {
+            margin: 0;
+        }
+        section 
+        {
+            padding: 2rem;
+            margin: 1rem auto;
+            max-width: 1000px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            font-size: 20px
+        }
+        h2 
+        {
+            color: #007bff;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 0.5rem;
+        }
+        h3 
+        {
+            color: #ff0000;
+            border-bottom: 2px solid #ff0000;
+            padding-bottom: 0.5rem;
+        }
+        .table-container 
+        {
+            overflow-x: auto;
+            text-align: justify;
+        }
+        table 
+        {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        th, td 
+        {
+            padding: 0.75rem;
+            text-align: center; /* Center the text */
+            border: 1px solid #dee2e6;
+        }
+        th 
+        {
+            background-color: #007bff;
+            color: #fff;
+        }
+        ul 
+        {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+        }
+        ul ul 
+        {
+            list-style-type: circle;
+        }
+        a 
+        {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover 
+        {
+            text-decoration: underline;
+        }
+        .highlighted 
+        {
+            background-color: #ffeb3b;
+            padding: 0 0.25rem;
+        }
+        .colored-word 
+        {
+            color: #dc3545;
+        }
+        .center-container 
+        {
+            text-align: center;
+        }
+        .text-container 
+        {
+            text-align: justify;
+            margin-top: 1rem;
+        }
+        .demo-link 
+        {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+        }
+  </style>
+</head>
+
+<body>
+    <header>
+        <div class="center-container">
+            <h1>Book Repository</h1>
+        </div>
+    </header>
+    
+    <main>
+        <section id="Overview">
+            <h2>Overview</h2>
+                <div class="text-container">
+                    <p>A system to manage a collection of books in. The system represents individual books with attributes such as title, author, ISBN, edition, publish year, and number of copies.</p>
+                    <p>The system provides various functionalities including loading book data from a file, adding new books, borrowing books, returning books, removing books, and printing the details of available books.</p>
+                    <p>This assignment emphasizes the application of object-oriented programming principles, file input/output operations, and collection frameworks.</p>
+                </div>
+        </section>
+    
+        <section id="Library Features">
+            <h2>Book Repository Operations</h2>
+                <div class="text-container">
+                    <ul>
+                        <li><span class="colored-word">Load Book Data</span>: This operation reads data from a CSV file, creates book objects from the data, and stores them in an arryList.</li>
+                        <li><span class="colored-word">Add New Book</span>: This operation prompts the user to input details of a new book (such as title, author, ISBN, edition, publish year, and number of copies) and adds the new book to the list.</li>
+                        <li><span class="colored-word">Borrow Book</span>: This operation allows a user to borrow a book by specifying its title. If the book is available (i.e., it has at least one copy), the number of copies is decremented by one.</li>
+                        <li><span class="colored-word">Return Book</span>: This operation allows a user to return a borrowed book by specifying its title. The number of copies of the book is incremented by one.</li>
+                        <li><span class="colored-word">Remove Book</span>:  This operation allows a user to remove a book from the list by specifying its title. If the book is found, it is removed from the list.</li>
+                        <li><span class="colored-word">Print Available Books</span>: This operation prints the details (title, author, ISBN, edition, publish year, and number of copies) of all books currently available in the list.</li>
+                    </ul>
+                </div>
+        </section>
+
+        <section id="Implementation Requirements">
+            <h2>Implementation Requirements</h2>
+                <div class="text-container">
+                    <ul>
+                        <li>A class named <span class="colored-word">Book</span> should be created to represent the Book Repository System.</li>
+                        <li>Implement all instance fields and methods required to manage the book system.</li>
+                    </ul>
+                </div>
+        </section>
+
+        <section>
+            <h2>Important Notes</h2>
+                <div class="text-container">
+                    <ul>
+                        <li><span class="colored-word">Reading CSV File Data</span>:</li>
+                            <ul>
+                                <li>Data is structured in lines, where each line represents a record. Fields within a line are separated by commas. These fields are used to initialize the instance fields in the <strong>Book</strong> class when creating book objects.</li>
+                                <li>Use a loop to read the file line-by-line. Split each line by commas to extract individual fields. <strong>Module 3 - File IO lecture provides detailed steps on reading files line-by-line and handling data.</strong></li>
+                                </ul>
+                        <li><span class="colored-word">Creating Book Objects from File Data</span>:</li>
+                            <ul>
+                                <li>For each line, split the data into respective fields.</li>
+                                <li>Create a Book object using the extracted data.</li>
+                                <li>Populate the Book object's attributes with the field values.</li>
+                            </ul>
+                        <li><span class="colored-word">Using Getter and Setter Methods</span>:</li>
+                            <ul>
+                                <li><Strong>Getter Methods</Strong>: Retrieve instance field values.</li>
+                                <li><strong>Setter Methods</strong>: Set or update instance field values.</li>
+                            </ul>
+                        </ul>
+                </div>
+        </section>
+    
+        <section id="Code Template">
+            <h2>Code Template</h2>
+                <div class="text-container">
+                    <p>Copy the following Java code template to your IDE and complete the provided code:</p>
+                    <pre><code class="language-java">/*********************************** Book Repository **********************************
+* This class involves creating a book repository system that manages a collection of 
+* books in a library. The system uses a `Book` class to represent individual books, 
+* each with attributes such as title, author, ISBN, edition, publish year, and number 
+* of copies. The repository utilizes an ArrayList to store Book objects and provides 
+* several functionalities including loading book data from a CSV file, adding new books, 
+* borrowing books, returning books, removing books, and printing available books. 
+* The main method demonstrates these functionalities by performing various operations 
+* such as adding, borrowing, and returning books, as well as displaying the available 
+* books in the library. This assignment emphasizes the use of object-oriented programming 
+* principles, file I/O operations, and collection frameworks in Java.
+* 
+* @author Type Your Name Here
+****************************************************************************************/
+
+
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.io.IOException;
+
+public class Book 
+{
+    / *********************** Instance Fields **********************/
+    private String title;
+    private String author;
+    private String ISBN;
+    private String edition;
+    private int publishYear;
+    private int numOfCopies;
+    
+    / ************** Static (Non-Instance) Fields ****************/
+
+    // Declare an ArrayList called 'books' to hold Book objects. This list is shared among all instances of the class.
+
+    // Declare a static Scanner object reference, intended for shared use.
+
+    // Declare a static Path object representing the path to the CSV file "books_data.csv". This path is shared across all instances.
+
+    
+    / ************************* Methods ************************/
+    // A static method to read csv file, create objects of the file data, and then add the objects to the arrayList 'books'
+
+    
+    // A default constructor method
+    public Book() 
+    {
+        // Empty body
+    }
+
+    // Constructor method to initialize instance fields
+    
+
+    // Getter and Setter for title
+    public String getTitle() 
+    {
+        return title;
+    }
+
+    public void setTitle(String title) 
+    {
+        this.title = title;
+    }
+
+    // Getter and Setter for author
+    public String getAuthor() 
+    {
+        return author;
+    }
+
+    public void setAuthor(String author) 
+    {
+        this.author = author;
+    }
+
+    // Getter and Setter for ISBN
+    public String getISBN() 
+    {
+        return ISBN;
+    }
+
+    public void setISBN(String ISBN) 
+    {
+        this.ISBN = ISBN;
+    }
+
+    // Getter and Setter for edition
+    public String getEdition() 
+    {
+        return edition;
+    }
+
+    public void setEdition(String edition) 
+    {
+        this.edition = edition;
+    }
+
+    // Getter and Setter for publishYear
+    public int getPublishYear() 
+    {
+        return publishYear;
+    }
+
+    public void setPublishYear(int publishYear) 
+    {
+        this.publishYear = publishYear;
+    }
+
+    // Getter and Setter for numOfCopies
+    public int getNumOfCopies() 
+    {
+        return numOfCopies;
+    }
+
+    public void setNumOfCopies(int numOfCopies) 
+    {
+        this.numOfCopies = numOfCopies;
+    }
+
+    // Instance method to add new books
+    
+
+    // Instance method to borrow books 
+    
+
+    // Instance method to return books 
+    
+
+    // Instance method to remove books
+    
+
+    // Instance method to print all available books
+    
+
+    / ************************ Main Method ***************************/
+    public static void main(String[] args) throws IOException
+    {
+        // Call the 'loadBookData' method to create Book objects from file data
+
+        // Create an instance of the Book class using the default constructor and assign it to a reference variable named 'bookReader'
+
+        // Call the method 'isBorrowed' on the 'bookReader' object to borrow book 'Arm live'  
+    
+
+        // Call the method 'isBorrowed' on the 'bookReader' object to borrow book 'Arm live'
+        
+
+        // Call the method 'isBorrowed' on the 'bookReader' object to borrow book 'Film class economy' 
+        
+
+        // Call the method 'addBook' on the 'bookReader' object to add a book 
+
+        // Call the method 'returnBook' on the 'bookReader' object to return book 'Nearly national'
+
+        // Call the method 'returnBook' on the 'bookReader' object to return book 'Arm live'
+
+        // Call the method 'isBorrowed' on the 'bookReader' object to borrow book 'Arm live'
+        
+
+        // Call the method 'printAvailableBooks' on the 'bookReader' object to print the all available books
+
+    }
+}</code></pre>
+                    <p>Download the provided <strong>books_data.csv</strong> file to your computer and place it in the same directory as the <strong>Book.java</strong> file.</p>
+                </div>
+        </section>
+
+        <section>
+            <h2>Sample Output</h2>
+                <div class="text-container">
+                    <p>Below is a sample output:</p>
+                        <pre style="color: rgb(115, 66, 66); font-family: 'Ubuntu'; font-size: 16px; font-weight: bold;">
+            A library visitor requested 'Arm live', which is currently available and ready to get picked!
+
+            A library visitor requested 'Arm live', which is currently out of stock!
+
+            A library visitor requested 'Film class economy', which is currently available and ready to get picked!
+
+            A new book is being added ....
+            Book's Title: Whatever Float Your Boat
+            Book's Author: Unknown Unknown
+            Book's ISBN: 0000000000
+            Book's Edition: 0th
+            Book's Publish Year: 2000
+            Book's Number Of Copies: 0
+            The book has been added successfully!
+
+            'Nearly national' has been returned!
+
+            'Arm live' has been returned!
+
+            A library visitor requested 'Arm live', which is currently available and ready to get picked!
+
+            Available books:
+            Data yeah type bad, Jodi Cabrera, 5416278020, 5th, 1999, 19
+            If, Sandra Stewart, 6728952552, 5th, 1981, 10
+            Foreign serious defense, Anthony Russell, 7701191459, 2th, 1958, 5
+            Worker, Aaron Barry, 2800195452, 2th, 1904, 13
+            Nearly national, Mr. David Spears III, 9643015069, 1th, 1937, 11
+            Light safe, Brianna Williams, 2795271889, 5th, 1928, 10
+            Defense sport, Alex Lewis, 3659318777, 3th, 1943, 1
+            Social us, Alan Crawford, 6222222930, 4th, 1946, 10
+            Arm live, Tyler Haynes, 2898561349, 4th, 1982, 0
+            It score during, Jose Butler, 1340979860, 1th, 2021, 19
+            Receive really, Charles Hoover, 2730042620, 1th, 2012, 3
+            Fine like catch design, Rebecca Bailey, 9063095037, 1th, 2021, 3
+            Film class economy, Sara Potter, 2309487937, 1th, 1965, 18
+            Audience defense, Brent Lin, 0469504836, 2th, 1996, 3
+            During when break, Walter Harris, 4653019845, 4th, 1961, 12
+            Contain Mrs education money, John Lopez, 3892631462, 1th, 1967, 5
+            Prevent member, Anna Schmidt, 4802515935, 3th, 1930, 4
+            However radio sea, Jennifer Cisneros, 0218458071, 1th, 1969, 1
+            National tell, Veronica Mcdonald, 3398911623, 1th, 1944, 8
+            Least magazine since, Teresa Garza, 0699135208, 4th, 1973, 3
+            Whatever Float Your Boat, Unknown Unknown, 0000000000, 0th, 2000, 0
+                        </pre>
+                        <p>Click <a href="https://cs.okstate.edu/~aalthou/AssignmentDemo/Assignment[3].mp4">here</a> to watch a short demonstration of the Book Repository System and its various operations.</p>
+                </div>
+        </section>
+
+        <section id="Submission">
+            <h2>Submission</h2>
+               <div class="text-container">
+                    <ul>
+                        <li>Complete the implementation and submit the <span class="colored-word">Book.java</span> file on Canvas by <strong>Friday, September 27, 2024, 11:59 pm</strong>. Refer to the syllabus for the late submission policy.</li>
+                        <li>Ensure your code includes your name and course in the documentation comment section.</li>
+                        <li>Adhere to best programming practices and use the provided programming template to complete the task.</li>
+                        <li>The rubric table below is used for grading criteria:</li>
+                            <div class="table-container">
+                                <table>
+                                    <tr>
+                                        <th>Points</th>
+                                        <th>Description</th>
+                                    </tr>
+                                    <tr>
+                                        <td>-2 pt</td>
+                                        <td>If failure to complete a single method</td>
+                                    </tr>
+                                    <tr>
+                                        <td>-1 pt</td>
+                                        <td>If failure to call a method</td>
+                                    </tr>
+                                </table>
+                            </div>
+                    </ul>
+                </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Oklahoma State University -  Department of Computer Science</p>
+    </footer>
+    
+</body>
+</html>
+
+                

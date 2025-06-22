@@ -27,7 +27,7 @@ public class Book
 
     /************************* Methods ************************/
     // A static method to read csv file, create objects of the file data, and then add the objects to the arrayList 'books'
-    public static void loadBookData() throws IOException {
+    public static void loadBookData() {
         if (Files.exists(filePath)) {
             Files.lines(filePath).forEach(line -> {
                 String[] data = line.split(",");
